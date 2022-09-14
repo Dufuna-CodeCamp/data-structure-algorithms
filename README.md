@@ -12,7 +12,7 @@ The link to the question of the week can be found in the `link.txt` file of the 
 
 ---The link will also be sent to the channel before the challenge starts.
 
-#Solving the challenge
+# Solving the challenge
 
 - Use the question link provided to navigate to the question. The question will be on `leetcode`, `Hackerrank` or `codility`.
 
