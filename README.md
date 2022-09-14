@@ -6,7 +6,7 @@ This repository contains tasks and submissions for weekly Data Structures &amp; 
 
 The link to the question of the week can be found in the `link.txt` file of the working folder. i.e. 
 
-- navigate to the folder that corresponds to the name of the question eg `data-structure-algorithms/leetcode/merge-sort-array` 
+- navigate to the folder that corresponds to the name of the question eg `data-structure-algorithms/leetcode/merge-sorted-array` 
 
 - open the `link.txt` file in that folder. The link to the question is provided here.
 
@@ -28,7 +28,7 @@ To add a submission of a task to the repository, take the following steps.
 
 - Navigate to the website directory from the root of the repository. This can be `leetcode`, `codility` or `hackerrank`.
 
-- Find the folder that corresponds to the name of the question eg `merge-sort-array`.
+- Find the folder that corresponds to the name of the question eg `merge-sorted-array`.
 
 - Make your submission inside that folder. The name of your file containing your submission should be your name, separated by hyphens. the langiage used. E.g. if name is John Doe and language is PHP, name of the file should be `john-doe.php`. If language is Javascript, file should be `john-doe.js` etc.
 
