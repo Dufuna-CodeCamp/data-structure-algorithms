@@ -74,6 +74,8 @@ var lengthOfLongestSubstring = function(s) {
     }
     return maxLength;
 };
+//runtime 879ms
+//memory 48.9mbs
 
 // substring concantenation
 // very hard lol
