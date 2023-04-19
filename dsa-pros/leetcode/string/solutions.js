@@ -32,3 +32,30 @@ var isAnagram = function(s, t) {
     return word1 === word2 ? true: false;
 };
 
+
+// QUESTION 3
+
+'https://leetcode.com/problems/longest-substring-without-repeating-characters/';
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    const set = new Set();
+    let left = 0, right = 0;
+    let longest = 0;
+
+    while (right < s.length) {
+        let charc = s[right];
+        while (set.has(charc)) {
+            set.delete(s[left]);
+            left++;
+        }
+        set.add(charc);
+        longest = Math.max(longest, right - left + 1);
+        right++;
+    }
+
+    return longest;
+};
