@@ -53,27 +53,28 @@ var isAnagram = function (s, t) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    if(!s) return 0;
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+    if (!s) return 0;
     const sArray = s.split('');
 
-    const substrings = [sArray[0]];
+    let string = sArray[0];
+    let highestCount = 1;
 
-    for(let i = 1; i < sArray.length; i++) {
-        let lastSubString = substrings[substrings.length-1].split('');
-        if(!(lastSubString.includes(sArray[i]))) {
-            substrings[substrings.length-1] += sArray[i];
+    for (let i = 1; i < sArray.length; i++) {
+        if (!(string.split('').includes(sArray[i]))) {
+            string += sArray[i];
         }
-        else{
-            substrings.push(sArray[i]);
+        else {
+            var index = string.split('').indexOf(sArray[i]);
+            string = string.split('').slice(index+1).join('') + sArray[i];
         }
-    }
 
-    let highestCount = 0; 
-
-    for(let substring of substrings){
-        if(substring.length > highestCount){
-            highestCount = substring.length;
+        if (string.length > highestCount) {
+            highestCount = string.length;
         }
     }
 
