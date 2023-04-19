@@ -53,10 +53,6 @@ var isAnagram = function (s, t) {
  * @param {string} s
  * @return {number}
  */
-/**
- * @param {string} s
- * @return {number}
- */
 var lengthOfLongestSubstring = function (s) {
     if (!s) return 0;
     const sArray = s.split('');
