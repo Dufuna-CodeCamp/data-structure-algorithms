@@ -79,3 +79,125 @@ var lengthOfLongestSubstring = function(s) {
 
 // substring concantenation
 // very hard lol
+
+
+// STRINGS 2
+//1. VALID PALLINDROME II
+/*
+ * @param {string} s
+ * @return {boolean}
+ */
+ //where and how to delete any one element?????????????? I think thats where i'm failing
+/*var validPalindrome = function(s) {
+    // create variables that take index 1 and last index
+    var indexZero = 0;
+    var lastIndex = s.length-1;
+    
+    //iterate along the length of string from zero tolast
+    while(indexZero<lastIndex){
+        // iterate through the given string at both indexes
+        //if the same return true
+        /*if (s.charAt(indexZero)==s.charAt(lastIndex)){
+            // step wise move up one from zero then down one from last
+            return true;
+        };*/
+        //otherwise
+        /*if (s.charAt(indexZero) !==s.charAt(lastIndex)){
+            return palindrome(s, indexZero +1, lastIndex) ||
+              palindrome(s,indexZero, lastIndex -1);
+  
+    
+        }; 
+        return true; 
+    }   
+};
+
+// function that actually checks for plaindrome
+//takes 3 parameters and checks if elements at different indexes are the same ie forming a palindrome or not
+function palindrome(str,indexZero,lastIndex){
+    while(indexZero<lastIndex){
+        if(str[indexZero] !== str[lastIndex]){ //ie if not giving a pallindrome
+            
+            //move to next index in both directions
+            indexZero++;
+            lastIndex--;
+            return false;
+        }
+        //if they are the same
+        return true;
+    }
+
+}*/
+// passed test cases on run
+//failed some cases on submission
+
+
+//optimal substring partition
+//run time 131ms
+//memory 50mbs
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var partitionString = function(s) {
+    // go through whole of string s
+    //check for position of each element
+    //push each to the stirng, if already exists push to next string?how?// all substrings stored on one variable
+    let n = s.length;
+    let substrings = new Set();
+    //start adding values from 1; given that weve already added an element to substrings
+    var total = 1;
+    for(i=0;i<=n;i++){
+        
+        if(substrings.has(s[i])){
+            total+=1;
+            substrings.clear(); //to start a new substring
+        }//if not in substrings add the element
+        substrings.add(s[i]);
+       
+    }
+    //return the number of times a vlaue has been added to a substring
+    return total;
+
+
+};
+// i think time complexity is On since we go through the intial string once? Space idk
+
+// 3. decoding string
+//apllied stacks
+//run time 64ms
+//memory 41.4mbs
+// space and time? 
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var decodeString = function(s) {
+    const stack = [];
+    for (const char of s) {
+        if (char !== ']') {
+            stack.push(char);
+            continue;
+        }
+
+        let currChar = stack.pop();
+        let decoded = '';
+        while (currChar !== '[') {
+            decoded = currChar.concat(decoded);
+            currChar = stack.pop();
+        }
+
+        let num = '';
+        currChar = stack.pop();
+
+        while (!Number.isNaN(Number(currChar))) {
+            num = currChar.concat(num);
+            currChar = stack.pop();
+        }
+
+        stack.push(currChar);
+        stack.push(decoded.repeat(Number(num)));
+    }
+
+    return stack.join('');
+};
