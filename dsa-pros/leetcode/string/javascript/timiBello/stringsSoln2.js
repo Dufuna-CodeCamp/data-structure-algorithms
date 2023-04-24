@@ -61,6 +61,39 @@ var findSubstring = function (s, words) {
   * @param {string} s
   * @return {number} **/
 
+// remove the i'th character from the string
+const cut = (s, i) => s.substr(0, i) + s.substr(i + 1);
+
+const solution = (s, n = s.length) => {
+  // revesed string
+  const reversed = s.split("").reverse().join("");
+  
+  //base case
+  if(reversed === s){
+     return true;
+  }
+  
+  //iterate array and check if palindrome can be found
+  for(let i = 0; i < n; i++){
+    //index from start
+    const start = i;
+    
+    //index from rear
+    const end = n - i - 1;
+    
+    //get the updated string by removing the characters
+    const nTransformed = cut(s, start);
+    const rTransformed = cut(reversed, end);
+    
+    //if both string match, then it is palindrome
+    if(nTransformed === rTransformed){
+      return true;
+    }  
+  }
+ 
+  //if no palindrome found
+  return false;
+}
 // QUESTION 3
 
 'https://leetcode.com/problems/optimal-partition-of-string/'
@@ -68,6 +101,7 @@ var findSubstring = function (s, words) {
 /**
   * @param {string} s
   * @return {number} **/
+
 
 
 // QUESTION 4
