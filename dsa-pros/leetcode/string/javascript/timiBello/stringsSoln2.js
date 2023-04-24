@@ -102,7 +102,26 @@ const solution = (s, n = s.length) => {
   * @param {string} s
   * @return {number} **/
 
-
+var partitionString = function(s) {//3
+    //abacaba  //a
+    if(s.length==1)
+        return 1;
+    if(s.length==0)
+        return 0;
+    let res=1;
+    let map=new Map();
+    for(let char of s){
+      if(!map.get(char))
+          map.set(char,1)
+        else{
+            map.clear();
+            map.set(char,1)
+              res++;
+        }
+          
+    }
+    return res;
+};
 
 // QUESTION 4
 
