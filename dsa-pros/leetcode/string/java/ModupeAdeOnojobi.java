@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -105,3 +106,60 @@ class Substring {
 
   }
 }
+
+/*-------------------------------------------------------------------------
+5. Valid palindrone 2
+-------------------------------------------------------------------------- */
+
+class ValidPalindrome2 {
+  public boolean validPalindrome(String s) {
+      int i = 0;
+      int j = s.length() - 1;
+      
+      while(i <= j){
+          if(s.charAt(i) == s.charAt(j)){
+              i++;
+              j--;
+          }
+          else return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+      }
+      return true;
+  }
+  public boolean isPalindrome(String s, int i, int j){
+      while(i <= j){
+          if(s.charAt(i) == s.charAt(j)){
+              i++;
+              j--;
+          }
+          else return false;
+      }
+      return true;
+  }
+}
+
+/*-------------------------------------------------------------------------
+6. Optimal partition of string
+-------------------------------------------------------------------------- */
+
+class OptimalPartition {
+  public int partitionString(String s) {
+      int count=(s.isEmpty())? 0:1;
+      
+      s=s.toLowerCase();
+      HashSet<Character> letter =new HashSet<Character>();
+      for(int i=0;i<s.length();i++){
+          if(letter.contains(s.charAt(i))){
+              letter.clear();
+              count ++;
+          }
+          letter.add(s.charAt(i));
+      }
+      return count;
+  
+  }
+}
+
+
+/*-------------------------------------------------------------------------
+7. Decode string
+-------------------------------------------------------------------------- */
