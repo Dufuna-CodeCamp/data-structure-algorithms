@@ -38,3 +38,14 @@ class Solution {
         
     }
 }
+
+
+// Create a stack to hold all the characters
+// Loop through the string
+// If the current character is not "]" i.e end of the substring that is the be repeated, push it to the stack
+// If we get to a character that is "]", then it means we have the complete substring that should be repeated.
+// Don't push it to the stack
+// Extract all the characters before the opening brackets - those make up the substring
+// Remove the opening bracket
+// Get the digit - n
+// Add the substring n times back to the stack
