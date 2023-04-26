@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 /*-------------------------------------------------------------------------
 1. Valid Palindrome
@@ -163,3 +164,42 @@ class OptimalPartition {
 /*-------------------------------------------------------------------------
 7. Decode string
 -------------------------------------------------------------------------- */
+
+class DecodeString {
+  public String decodeString(String s) {
+  Stack<Integer> numberStack = new Stack<>();
+  Stack<StringBuilder> stringBuilderStack = new Stack<>();
+  StringBuilder currentStringBuilder = new StringBuilder();
+  int currentNumber = 0;
+
+  for (char c : s.toCharArray()) {
+      if (Character.isDigit(c)) {
+          currentNumber = currentNumber * 10 + c - '0';
+      } else if (c == '[') {
+          stringBuilderStack.push(currentStringBuilder);
+          currentStringBuilder = new StringBuilder();
+          numberStack.push(currentNumber);
+          currentNumber = 0;
+      } else if (c == ']') {
+          StringBuilder temp = currentStringBuilder;
+          currentStringBuilder = stringBuilderStack.pop();
+          int count = numberStack.pop();
+
+          while (count-- > 0) {
+            currentStringBuilder.append(temp);
+          }
+      } else {
+          currentStringBuilder.append(c);
+      }
+  }
+
+  return currentStringBuilder.toString();
+  }
+}
+
+/*currentNumber = currentNumber * 10 + c - '0';
+ * This calculation effectively converts the ASCII code of the digit character to its corresponding numerical value
+ * 
+ * For example, if c is the character '3', then its ASCII code is 51. 
+ * The ASCII code of '0' is 48. So, c - '0' is equal to 3, which is the numerical value of the digit '3'.
+ */
