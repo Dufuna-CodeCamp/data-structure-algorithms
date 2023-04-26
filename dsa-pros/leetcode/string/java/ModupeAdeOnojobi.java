@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 /*-------------------------------------------------------------------------
 1. Valid Palindrome
@@ -105,3 +107,99 @@ class Substring {
 
   }
 }
+
+/*-------------------------------------------------------------------------
+5. Valid palindrone 2
+-------------------------------------------------------------------------- */
+
+class ValidPalindrome2 {
+  public boolean validPalindrome(String s) {
+      int i = 0;
+      int j = s.length() - 1;
+      
+      while(i <= j){
+          if(s.charAt(i) == s.charAt(j)){
+              i++;
+              j--;
+          }
+          else return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+      }
+      return true;
+  }
+  public boolean isPalindrome(String s, int i, int j){
+      while(i <= j){
+          if(s.charAt(i) == s.charAt(j)){
+              i++;
+              j--;
+          }
+          else return false;
+      }
+      return true;
+  }
+}
+
+/*-------------------------------------------------------------------------
+6. Optimal partition of string
+-------------------------------------------------------------------------- */
+
+class OptimalPartition {
+  public int partitionString(String s) {
+      int count=(s.isEmpty())? 0:1;
+      
+      s=s.toLowerCase();
+      HashSet<Character> letter =new HashSet<Character>();
+      for(int i=0;i<s.length();i++){
+          if(letter.contains(s.charAt(i))){
+              letter.clear();
+              count ++;
+          }
+          letter.add(s.charAt(i));
+      }
+      return count;
+  
+  }
+}
+
+
+/*-------------------------------------------------------------------------
+7. Decode string
+-------------------------------------------------------------------------- */
+
+class DecodeString {
+  public String decodeString(String s) {
+  Stack<Integer> numberStack = new Stack<>();
+  Stack<StringBuilder> stringBuilderStack = new Stack<>();
+  StringBuilder currentStringBuilder = new StringBuilder();
+  int currentNumber = 0;
+
+  for (char c : s.toCharArray()) {
+      if (Character.isDigit(c)) {
+          currentNumber = currentNumber * 10 + c - '0';
+      } else if (c == '[') {
+          stringBuilderStack.push(currentStringBuilder);
+          currentStringBuilder = new StringBuilder();
+          numberStack.push(currentNumber);
+          currentNumber = 0;
+      } else if (c == ']') {
+          StringBuilder temp = currentStringBuilder;
+          currentStringBuilder = stringBuilderStack.pop();
+          int count = numberStack.pop();
+
+          while (count-- > 0) {
+            currentStringBuilder.append(temp);
+          }
+      } else {
+          currentStringBuilder.append(c);
+      }
+  }
+
+  return currentStringBuilder.toString();
+  }
+}
+
+/*currentNumber = currentNumber * 10 + c - '0';
+ * This calculation effectively converts the ASCII code of the digit character to its corresponding numerical value
+ * 
+ * For example, if c is the character '3', then its ASCII code is 51. 
+ * The ASCII code of '0' is 48. So, c - '0' is equal to 3, which is the numerical value of the digit '3'.
+ */
