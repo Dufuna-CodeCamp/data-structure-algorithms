@@ -1,4 +1,6 @@
-Questions
+===============================================================================
+                      WK - 1  Questions
+===============================================================================
 
 https://leetcode.com/problems/valid-palindrome/
 https://leetcode.com/problems/valid-anagram/
@@ -6,10 +8,22 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters/
 https://leetcode.com/problems/substring-with-concatenation-of-all-words/
 
 
+
 ===============================================================================
-                                More Questions
+                      WK - 2  Questions
 ===============================================================================
 
 https://leetcode.com/problems/valid-palindrome-ii/
 https://leetcode.com/problems/optimal-partition-of-string/
 https://leetcode.com/problems/decode-string/
+
+
+
+===============================================================================
+                      WK - 3  Questions
+===============================================================================
+
+https://leetcode.com/problems/split-a-string-in-balanced-strings/
+https://leetcode.com/problems/multiply-strings/
+https://leetcode.com/problems/reorganize-string/
+https://leetcode.com/problems/regular-expression-matching/
