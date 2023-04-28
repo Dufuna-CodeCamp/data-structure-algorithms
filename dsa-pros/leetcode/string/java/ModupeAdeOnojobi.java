@@ -11,17 +11,17 @@ import java.util.Stack;
 -------------------------------------------------------------------------- */
 
 class Palindrome {
-  public boolean isPalindrome(String s) {
-    String cleanedStr = s.toLowerCase().replaceAll("[^a-z0-9]+", "");
+    public boolean isPalindrome(String s) {
+        String cleanedStr = s.toLowerCase().replaceAll("[^a-z0-9]+", "");
 
-    StringBuilder reversed = new StringBuilder();
-    for (int i = cleanedStr.length() - 1; i >= 0; i--) {
-      reversed.append(cleanedStr.charAt(i));
+        StringBuilder reversed = new StringBuilder();
+        for (int i = cleanedStr.length() - 1; i >= 0; i--) {
+            reversed.append(cleanedStr.charAt(i));
+        }
+
+        return cleanedStr.equals(reversed.toString());
+
     }
-
-    return cleanedStr.equals(reversed.toString());
-
-  }
 }
 
 /*-------------------------------------------------------------------------
@@ -29,20 +29,20 @@ class Palindrome {
 -------------------------------------------------------------------------- */
 
 class Anagram {
-  public boolean isAnagram(String s, String t) {
-    if (s.length() != t.length()) {
-      return false;
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        return sortString(s).equals(sortString(t));
+
     }
 
-    return sortString(s).equals(sortString(t));
-
-  }
-
-  private String sortString(String s) {
-    char chars[] = s.toCharArray();
-    Arrays.sort(chars);
-    return String.valueOf(chars);
-  }
+    private String sortString(String s) {
+        char chars[] = s.toCharArray();
+        Arrays.sort(chars);
+        return String.valueOf(chars);
+    }
 }
 
 /*-------------------------------------------------------------------------
@@ -50,22 +50,22 @@ class Anagram {
 -------------------------------------------------------------------------- */
 
 class LongestSubstring {
-  public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring(String s) {
 
-    List<Character> temp = new ArrayList<>();
-    int longest = 0;
+        List<Character> temp = new ArrayList<>();
+        int longest = 0;
 
-    for (int i = 0; i < s.length(); i++) {
-      while (temp.contains(s.charAt(i))) {
-        temp.remove(0);
-      }
-      temp.add(s.charAt(i));
-      longest = Integer.max(longest, temp.size());
+        for (int i = 0; i < s.length(); i++) {
+            while (temp.contains(s.charAt(i))) {
+                temp.remove(0);
+            }
+            temp.add(s.charAt(i));
+            longest = Integer.max(longest, temp.size());
+
+        }
+        return longest;
 
     }
-    return longest;
-
-  }
 }
 
 /*-------------------------------------------------------------------------
@@ -73,39 +73,39 @@ class LongestSubstring {
 -------------------------------------------------------------------------- */
 
 class Substring {
-  public List<Integer> findSubstring(String s, String[] words) {
-    List<Integer> indices = new ArrayList<>();
-    if (s == null || words == null || words.length == 0) {
-      return indices;
-    }
-    int n = s.length();
-    int m = words.length;
-    int k = words[0].length();
-    Map<String, Integer> count = new HashMap<>();
-    for (String word : words) {
-      count.put(word, count.getOrDefault(word, 0) + 1);
-    }
-    for (int i = 0; i <= n - m * k; i++) {
-      Map<String, Integer> seen = new HashMap<>();
-      int j = 0;
-      while (j < m) {
-        String word = s.substring(i + j * k, i + (j + 1) * k);
-        if (!count.containsKey(word)) {
-          break;
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> indices = new ArrayList<>();
+        if (s == null || words == null || words.length == 0) {
+            return indices;
         }
-        seen.put(word, seen.getOrDefault(word, 0) + 1);
-        if (seen.get(word) > count.getOrDefault(word, 0)) {
-          break;
+        int n = s.length();
+        int m = words.length;
+        int k = words[0].length();
+        Map<String, Integer> count = new HashMap<>();
+        for (String word : words) {
+            count.put(word, count.getOrDefault(word, 0) + 1);
         }
-        j++;
-      }
-      if (j == m) {
-        indices.add(i);
-      }
-    }
-    return indices;
+        for (int i = 0; i <= n - m * k; i++) {
+            Map<String, Integer> seen = new HashMap<>();
+            int j = 0;
+            while (j < m) {
+                String word = s.substring(i + j * k, i + (j + 1) * k);
+                if (!count.containsKey(word)) {
+                    break;
+                }
+                seen.put(word, seen.getOrDefault(word, 0) + 1);
+                if (seen.get(word) > count.getOrDefault(word, 0)) {
+                    break;
+                }
+                j++;
+            }
+            if (j == m) {
+                indices.add(i);
+            }
+        }
+        return indices;
 
-  }
+    }
 }
 
 /*-------------------------------------------------------------------------
@@ -113,29 +113,30 @@ class Substring {
 -------------------------------------------------------------------------- */
 
 class ValidPalindrome2 {
-  public boolean validPalindrome(String s) {
-      int i = 0;
-      int j = s.length() - 1;
-      
-      while(i <= j){
-          if(s.charAt(i) == s.charAt(j)){
-              i++;
-              j--;
-          }
-          else return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
-      }
-      return true;
-  }
-  public boolean isPalindrome(String s, int i, int j){
-      while(i <= j){
-          if(s.charAt(i) == s.charAt(j)){
-              i++;
-              j--;
-          }
-          else return false;
-      }
-      return true;
-  }
+    public boolean validPalindrome(String s) {
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i <= j) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+                j--;
+            } else
+                return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+        }
+        return true;
+    }
+
+    public boolean isPalindrome(String s, int i, int j) {
+        while (i <= j) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+                j--;
+            } else
+                return false;
+        }
+        return true;
+    }
 }
 
 /*-------------------------------------------------------------------------
@@ -143,63 +144,67 @@ class ValidPalindrome2 {
 -------------------------------------------------------------------------- */
 
 class OptimalPartition {
-  public int partitionString(String s) {
-      int count=(s.isEmpty())? 0:1;
-      
-      s=s.toLowerCase();
-      HashSet<Character> letter =new HashSet<Character>();
-      for(int i=0;i<s.length();i++){
-          if(letter.contains(s.charAt(i))){
-              letter.clear();
-              count ++;
-          }
-          letter.add(s.charAt(i));
-      }
-      return count;
-  
-  }
-}
+    public int partitionString(String s) {
+        int count = (s.isEmpty()) ? 0 : 1;
 
+        s = s.toLowerCase();
+        HashSet<Character> letter = new HashSet<Character>();
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (letter.contains(s.charAt(i))) {
+                letter.clear();
+                count++;
+            }
+
+            letter.add(s.charAt(i));
+        }
+        return count;
+
+    }
+}
 
 /*-------------------------------------------------------------------------
 7. Decode string
 -------------------------------------------------------------------------- */
 
 class DecodeString {
-  public String decodeString(String s) {
-  Stack<Integer> numberStack = new Stack<>();
-  Stack<StringBuilder> stringBuilderStack = new Stack<>();
-  StringBuilder currentStringBuilder = new StringBuilder();
-  int currentNumber = 0;
+    public String decodeString(String s) {
+        Stack<Integer> numberStack = new Stack<>();
+        Stack<StringBuilder> stringBuilderStack = new Stack<>();
+        StringBuilder currentStringBuilder = new StringBuilder();
+        int currentNumber = 0;
 
-  for (char c : s.toCharArray()) {
-      if (Character.isDigit(c)) {
-          currentNumber = currentNumber * 10 + c - '0';
-      } else if (c == '[') {
-          stringBuilderStack.push(currentStringBuilder);
-          currentStringBuilder = new StringBuilder();
-          numberStack.push(currentNumber);
-          currentNumber = 0;
-      } else if (c == ']') {
-          StringBuilder temp = currentStringBuilder;
-          currentStringBuilder = stringBuilderStack.pop();
-          int count = numberStack.pop();
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                currentNumber = currentNumber * 10 + c - '0';
+            } else if (c == '[') {
+                stringBuilderStack.push(currentStringBuilder);
+                currentStringBuilder = new StringBuilder();
+                numberStack.push(currentNumber);
+                currentNumber = 0;
+            } else if (c == ']') {
+                StringBuilder temp = currentStringBuilder;
+                currentStringBuilder = stringBuilderStack.pop();
+                int count = numberStack.pop();
 
-          while (count-- > 0) {
-            currentStringBuilder.append(temp);
-          }
-      } else {
-          currentStringBuilder.append(c);
-      }
-  }
+                while (count-- > 0) {
+                    currentStringBuilder.append(temp);
+                }
+            } else {
+                currentStringBuilder.append(c);
+            }
+        }
 
-  return currentStringBuilder.toString();
-  }
+        return currentStringBuilder.toString();
+    }
 }
 
-/*currentNumber = currentNumber * 10 + c - '0';
- * This calculation effectively converts the ASCII code of the digit character to its corresponding numerical value
+/*
+ * currentNumber = currentNumber * 10 + c - '0';
+ * This calculation effectively converts the ASCII code of the digit character
+ * to its corresponding numerical value
  * 
- * For example, if c is the character '3', then its ASCII code is 51. 
- * The ASCII code of '0' is 48. So, c - '0' is equal to 3, which is the numerical value of the digit '3'.
+ * For example, if c is the character '3', then its ASCII code is 51.
+ * The ASCII code of '0' is 48. So, c - '0' is equal to 3, which is the
+ * numerical value of the digit '3'.
  */
