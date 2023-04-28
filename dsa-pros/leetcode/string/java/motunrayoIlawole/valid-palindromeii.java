@@ -13,7 +13,9 @@ class Solution {
                 left++;
                 right--;
             }
+            // If the characters are no longer the same:
             else {
+                // Check if it's a palindrome after skipping the character that is different
                 return isPalindrome(s, left+1, right) || isPalindrome(s, left, right-1);
             }
         }
@@ -24,10 +26,13 @@ class Solution {
     public boolean isPalindrome(String s, int left, int right) {
 
         while (left < right) {
+            // If the characters at the left and right are the same:
             if (s.charAt(left) == s.charAt(right)) {
+                // Move to the next characters
                 left++;
                 right--;
             }
+            // If the characters are no longer the same, the word is not a palindrome
             else {
                 return false;
             }
