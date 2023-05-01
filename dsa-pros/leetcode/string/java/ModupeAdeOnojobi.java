@@ -208,3 +208,73 @@ class DecodeString {
  * The ASCII code of '0' is 48. So, c - '0' is equal to 3, which is the
  * numerical value of the digit '3'.
  */
+
+
+
+/*-------------------------------------------------------------------------
+8. Split a String in Balanced Strings
+-------------------------------------------------------------------------- */
+
+class BalancedStringSplit {
+    public int balancedStringSplit(String s) {
+        int countR = 0, countL = 0, count = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if (s.charAt(i) == 'R') {
+                countR++;
+            } else if (s.charAt(i) == 'L') {
+                countL++;
+            }
+
+            if (countL == countR) {
+                count++;
+            }
+
+        }
+        
+        return count;
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+9. Multiply Strings
+-------------------------------------------------------------------------- */
+
+class Solution {
+    public String multiply(String num1, String num2) {
+        List<Integer> one1 = new ArrayList<>();
+        List<Integer> one2 = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < num1.length(); i++) {
+            one1.add(num1.charAt(i) - '0');
+            // System.out.println(num1.charAt(i));
+        }
+
+        for (int i = 0; i < num2.length(); i++) {
+            one2.add(num2.charAt(i) - '0');
+        }
+
+
+        for (int i = 0; i < one1.size(); i++) {
+            int product = one1.get(i) * one2.get(i);
+            result.append(product);
+        }
+
+        // total = one * two;
+        System.out.println(one1 + " : " + one2);
+        return result.toString();
+
+    }
+}
+
+/*-------------------------------------------------------------------------
+10. Reorganize String
+-------------------------------------------------------------------------- */
+
+
+/*-------------------------------------------------------------------------
+11. Regular Expression Matching
+-------------------------------------------------------------------------- */
