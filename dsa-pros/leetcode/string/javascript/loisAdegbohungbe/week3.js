@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
 1. SPLIT A STRING IN BALANCED STRINGS
-Time complexity -                       Runtime - 61ms
-Space complexity -                      Memory Usage - 43.1MB
+Time complexity - O(n)                   Runtime - 61ms
+Space complexity - O(1)                  Memory Usage - 43.1MB
 -------------------------------------------------------------------------- */
 const balancedStringSplit = function (s) {
     let result = 0;
@@ -25,8 +25,8 @@ const balancedStringSplit = function (s) {
 
 /*-------------------------------------------------------------------------
 2. MULTIPLY STRINGS
-Time complexity -                       Runtime - 71ms
-Space complexity -                      Memory Usage -  45.1MB
+Time complexity - O(n * m)              Runtime - 71ms
+Space complexity - O(n)                 Memory Usage -  45.1MB
 -------------------------------------------------------------------------- */
 var multiply = function (num1, num2) {
     const m = num1.length;
