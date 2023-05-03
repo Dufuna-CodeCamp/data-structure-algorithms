@@ -93,7 +93,7 @@ var reorganizeString = function (s) {
         const count = map[char];
 
         for (let j = 0; j < count; j++) {
-            res[position] = char;
+            result[position] = char;
             position += 2;
 
             //this would happen only once for the char with the maximum count
