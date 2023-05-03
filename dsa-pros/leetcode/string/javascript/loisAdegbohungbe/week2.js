@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
 1. VALID PALINDROME II
-Time complexity -                       Runtime - 303ms
-Space complexity -                      Memory Usage - 64.8MB
+Time complexity - O(n)                  Runtime - 303ms
+Space complexity - O(1)                 Memory Usage - 64.8MB
 -------------------------------------------------------------------------- */
 const validPalindrome = function(s) {
     let middle = s.length / 2;
