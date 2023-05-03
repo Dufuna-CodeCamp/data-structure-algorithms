@@ -242,30 +242,66 @@ class BalancedStringSplit {
 9. Multiply Strings
 -------------------------------------------------------------------------- */
 
-class Solution {
+// class Solution {
+//     public String multiply(String num1, String num2) {
+//         List<Integer> one1 = new ArrayList<>();
+//         List<Integer> one2 = new ArrayList<>();
+//         StringBuilder result = new StringBuilder();
+
+//         for (int i = 0; i < num1.length(); i++) {
+//             one1.add(num1.charAt(i) - '0');
+//             // System.out.println(num1.charAt(i));
+//         }
+
+//         for (int i = 0; i < num2.length(); i++) {
+//             one2.add(num2.charAt(i) - '0');
+//         }
+
+
+//         for (int i = 0; i < one1.size(); i++) {
+//             int product = one1.get(i) * one2.get(i);
+//             result.append(product);
+//         }
+
+//         // total = one * two;
+//         System.out.println(one1 + " : " + one2);
+//         return result.toString();
+
+//     }
+// }
+
+
+class MultiplyStrings {
     public String multiply(String num1, String num2) {
-        List<Integer> one1 = new ArrayList<>();
-        List<Integer> one2 = new ArrayList<>();
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < num1.length(); i++) {
-            one1.add(num1.charAt(i) - '0');
-            // System.out.println(num1.charAt(i));
+        if (num1.equals("0") || num2.equals("0")) {
+        return "0";
+    }
+    
+    int len1 = num1.length(), len2 = num2.length();
+    int[] result = new int[len1 + len2];
+    
+    for (int i = len1 - 1; i >= 0; i--) {
+        int digit1 = num1.charAt(i) - '0';
+        
+        for (int j = len2 - 1; j >= 0; j--) {
+            int digit2 = num2.charAt(j) - '0';
+            int product = digit1 * digit2;
+            
+            int pos1 = i + j, pos2 = i + j + 1;
+            int sum = result[pos2] + product;
+            result[pos2] = sum % 10;
+            result[pos1] += sum / 10;
         }
+    }
 
-        for (int i = 0; i < num2.length(); i++) {
-            one2.add(num2.charAt(i) - '0');
+    StringBuilder sb = new StringBuilder();
+    for (int digit : result) {
+        if (sb.length() == 0 && digit == 0) {
+            continue;
         }
-
-
-        for (int i = 0; i < one1.size(); i++) {
-            int product = one1.get(i) * one2.get(i);
-            result.append(product);
-        }
-
-        // total = one * two;
-        System.out.println(one1 + " : " + one2);
-        return result.toString();
+        sb.append(digit);
+    }
+    return sb.toString();
 
     }
 }
@@ -274,6 +310,60 @@ class Solution {
 10. Reorganize String
 -------------------------------------------------------------------------- */
 
+class ReorganizeString {
+    public String reorganizeString(String s) {
+        // Count the frequency of each character
+        int[] freq = new int[26]; // 0 - 25 ie the number of english alphabet
+
+        for (char c : s.toCharArray()) {
+            // to get the right index for each character we substract the character from a.     
+            // a is 97, b is 98. so, if the s.char . if c = 'b' the answer to freq[c - 'a']++; is 98         - 97 = 1 i.e  freq[1]++
+            freq[c - 'a']++;
+
+        } 
+
+         // Find the most frequent character
+        int max = 0, letter = 0;
+
+        for (int i = 0; i < freq.length; i++) {
+            System.out.println(freq[i]);
+            if (freq[i] > max) {
+                max = freq[i];
+                letter = i;
+            }
+        }
+
+        // Check if the most frequent character appears more than half of the time
+        if (max > (s.length() + 1) / 2) {
+            return ""; 
+        }
+
+        // Build the new string by alternating the most frequent and least frequent characters
+        char[] res = new char[s.length()];
+        int idx = 0;
+
+        while (freq[letter] > 0) {
+            res[idx] = (char) (letter + 'a');
+            idx += 2;
+            freq[letter]--;
+        }
+
+        for (int i = 0; i < freq.length; i++) {
+            while (freq[i] > 0) {
+                if (idx >= res.length) {
+                    idx = 1;
+                }
+                res[idx] = (char) (i + 'a');
+                idx += 2;
+                freq[i]--;
+            }
+        }
+
+        return String.valueOf(res);
+    
+        
+    }
+}
 
 /*-------------------------------------------------------------------------
 11. Regular Expression Matching
