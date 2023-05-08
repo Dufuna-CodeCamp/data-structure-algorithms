@@ -59,3 +59,96 @@ var multiply = function (num1, num2) {
 };
 
 
+// QUESTION 3
+// Runtime: 73ms, memory 45.2mb
+// O(n) Time complexity
+//  Space complexity: O(n)
+'https://leetcode.com/problems/reorganize-string/';
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+ const reorganizeString = (S = '') => {
+  const map = {}
+  for (const c of S) {
+    map[c] = (map[c] || 0) + 1
+  }
+  const keys = Object.keys(map).sort((a, b) => map[a] - map[b])
+  let key = keys.pop()
+  const result = []
+  for (let i = 0; i < S.length; i += 2) {
+    if (!map[key]) {
+      key = keys.pop()
+    }
+    result[i] = key
+    map[key] -= 1
+  }
+  for (let i = 1; i < S.length; i += 2) {
+    if (!map[key]) {
+      key = keys.pop()
+    }
+    result[i] = key
+    map[key] -= 1
+  }
+  return result.every((c, index) => c !== result[index - 1]) ? result.join('') : ''
+};
+
+
+
+
+
+// QUESTION 4 
+// Using this recufrsion method seems like it's a long one and the run time is long
+// Tried to do it in another way but it didn't pass. Hope to see a more effective methiod
+// Runtime: 696ms, memory 42.6mb
+// O(n) Time complexity
+//  Space complexity: O(n)
+'https://leetcode.com/problems/regular-expression-matching/';
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
+function isMatch(str, pat) {
+    return recursiveIsMatch(0, 0, str, pat);
+}
+function recursiveIsMatch(i, j, str, pat) {
+    const inputStringLength = str.length;
+    const patternLength = pat.length;
+
+    // Reached the end of the pattern
+    if (j == patternLength) {
+        // Return whether or not we've also reached the end of the string (entire string has passed)
+        return i == inputStringLength;
+    }
+
+    // If the current pattern character is followed by a * (is a wildcard)
+    if (j + 1 < patternLength && pat.charAt(j + 1) == '*') {
+        // Assume 0 matches of the current pattern character, move on to the next point in the pattern (after the asterisk)
+        if (recursiveIsMatch(i, j + 2, str, pat)) return true;
+
+        // Loop through the remaining characters, so long as they match by character (or .)
+        while (
+            i < inputStringLength &&
+            (pat.charAt(j) == '.' || str.charAt(i) == pat.charAt(j))
+        ) {
+            // Check the rest of the string (1 character forward), against the next point in the pattern (after the asterisk)
+            if (recursiveIsMatch(++i, j + 2, str, pat)) return true;
+        }
+    }
+    // If the current pattern character is not a wildcard, and matches the current string character
+    else if (
+        i < inputStringLength &&
+        (pat.charAt(j) == '.' || str.charAt(i) == pat.charAt(j))
+    ) {
+        // Move onto the next character, and the next character of the pattern
+        return recursiveIsMatch(i + 1, j + 1, str, pat);
+    }
+
+    // String does not match current point in pattern
+    return false;
+}
+
+
