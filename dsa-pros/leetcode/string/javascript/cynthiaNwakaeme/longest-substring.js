@@ -3,6 +3,6 @@
  * @return {number}
  */
 
-const lengthOfLongestSubstring = str => {
+const longestSubstring = str => {
 
 }
