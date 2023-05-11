@@ -1,0 +1,8 @@
+===============================================================================
+                      WK - 4  Questions
+===============================================================================
+
+https://leetcode.com/problems/contains-duplicate/
+https://leetcode.com/problems/binary-search/
+https://leetcode.com/problems/rotate-array/
+https://leetcode.com/problems/longest-increasing-subsequence/
