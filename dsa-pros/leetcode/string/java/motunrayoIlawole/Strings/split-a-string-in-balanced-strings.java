@@ -1,3 +1,5 @@
+package Strings;
+
 class Solution {
     public int balancedStringSplit(String s) {
 
