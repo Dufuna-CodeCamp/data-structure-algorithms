@@ -1,5 +1,18 @@
 //Arrays
 //manifesting answswering all questions this time
+//practice question: Remove duplicates
+var removeDuplicates = function(nums) {
+    let count = 0;
+    //variable to store the number of unique elements ie k
+    for(i=0;i<nums.length;i++){
+        if(nums[i] != nums[i+1]){
+           nums[count] = nums[i];
+        count++
+           }
+    }
+    return count;
+};
+//runtime 68ms space 44.9mb
 //1. Contains duplicate
 //we go through array ~ twice runtime 7366ms space 48.9mbs
 //time complexity  ..... space? 
