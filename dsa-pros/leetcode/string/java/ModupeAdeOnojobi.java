@@ -146,6 +146,7 @@ class ValidPalindrome2 {
 class OptimalPartition {
     public int partitionString(String s) {
         int count = (s.isEmpty()) ? 0 : 1;
+<<<<<<< HEAD
 
         s = s.toLowerCase();
         HashSet<Character> letter = new HashSet<Character>();
@@ -160,6 +161,22 @@ class OptimalPartition {
         }
         return count;
 
+=======
+
+        s = s.toLowerCase();
+        HashSet<Character> letter = new HashSet<Character>();
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (letter.contains(s.charAt(i))) {
+                letter.clear();
+                count++;
+            }
+
+            letter.add(s.charAt(i));
+        }
+        return count;
+
+>>>>>>> 52956e552e4bad46628c0d115dce772dbe712da9
     }
 }
 
@@ -368,3 +385,24 @@ class ReorganizeString {
 /*-------------------------------------------------------------------------
 11. Regular Expression Matching
 -------------------------------------------------------------------------- */
+
+class RegexMatching {
+    public boolean isMatch(String s, String p) {
+
+        if (p.isEmpty()) return s.isEmpty();
+
+        boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) ||            p.charAt(0) == '.');
+
+        if (p.length() >= 2 && p.charAt(1) == '*') {
+        // Case 1: '*' matches zero preceding element in pattern 'p'
+        // Case 2: '*' matches one or more preceding element in pattern 'p'
+
+            return (isMatch(s, p.substring(2))) || 
+                (firstMatch && isMatch(s.substring(1), p));
+        }  
+        // Chars match and move to the next characters in both 's' and 'p'
+
+        return firstMatch && isMatch(s.substring(1), p.substring(1));
+
+    }
+}
