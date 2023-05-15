@@ -146,7 +146,6 @@ class ValidPalindrome2 {
 class OptimalPartition {
     public int partitionString(String s) {
         int count = (s.isEmpty()) ? 0 : 1;
-<<<<<<< HEAD
 
         s = s.toLowerCase();
         HashSet<Character> letter = new HashSet<Character>();
@@ -161,22 +160,6 @@ class OptimalPartition {
         }
         return count;
 
-=======
-
-        s = s.toLowerCase();
-        HashSet<Character> letter = new HashSet<Character>();
-        
-        for (int i = 0; i < s.length(); i++) {
-            if (letter.contains(s.charAt(i))) {
-                letter.clear();
-                count++;
-            }
-
-            letter.add(s.charAt(i));
-        }
-        return count;
-
->>>>>>> 52956e552e4bad46628c0d115dce772dbe712da9
     }
 }
 
