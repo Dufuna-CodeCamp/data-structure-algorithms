@@ -27,8 +27,12 @@ You must write an algorithm with O(log n) runtime complexity.
  */
 var search = function (nums, target) {
   nums.sort;
-  let i = nums.indexOf(target);
-  return i;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === target) {
+      return i;
+    }
+  }
+  return -1; // Element not found
 };
 
 /**
@@ -40,4 +44,21 @@ var search = function (nums, target) {
 var rotate = function (nums, k) {
   k %= nums.length; // actual number of steps to rotate
   nums.unshift(...nums.splice(-k));
+};
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * Given an integer array nums, return the length of the longest strictly increasing 
+subsequence
+.
+ */
+var lengthOfLIS = function (nums) {
+  let count = 1;
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i + 1] > nums[i]) {
+      count++;
+    }
+  }
+  return count;
 };
