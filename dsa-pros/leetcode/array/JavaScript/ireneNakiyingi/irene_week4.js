@@ -30,19 +30,39 @@ var containsDuplicate = function(nums) {
 };
 
 //2.Binary Search
-// time is big O n- Iterate through once. so depends onm length of array
+// time is  O (n)- Iterate through once. so depends onm length of array
 //space? 
-//run time  52ms ; spce 45.3mb
+//run time  52ms ; space 45.3mb
 //can i use contains/ is in??
 //other option indexOf
-var search = function(nums, target) {
-    for(i=0;i<nums.length;i++){
+/*i knew you were too easy to be true; time complexity O(n)
+for(i=0;i<nums.length;i++){
         if(nums[i] == target){
             //if value at index i is target
             return i;
         }
     }
     return -1;
+    */
+   //time below: complexity O(log n); space O(1)
+   //run time 62ms: space 44.8mbs
+var search = function(nums, target) {
+    //array already sorted as stated: if not- sort first; method depends on it
+        var startArr = 0; //starting index
+        var endArr = nums.length-1; //last index
+        var midArr = Math.floor((startArr+endArr)/2); //floor to round off whole number
+        while(startArr<= endArr){ //starting by using length of whole array
+            if(nums[midArr]=== target){ //divide in half
+                return midArr;
+            } else if(nums[midArr]> target){ //if value in middle exceeds target, check to the left
+                endArr = midArr-1;
+            } else if(nums[midArr]< target){ //if value in middle smaller, check to the right
+                startArr = midArr+1;
+            }
+            var midArr = Math.floor((startArr+endArr)/2); //at each iteration of while loop  
+        };
+        // otherwise
+        return -1;
 };
 //3.Rotate array
 //hardest one to figure out
@@ -77,8 +97,7 @@ var rotate = function(nums, k) {
 //time complexity O(n*3); space O(1)
 
 //4.longestincreasing subsequence
-//for reasons i cannot explain yet Typescript method accepted
-//i dont know typescript
+//solved
 //var counter =0;
 var lengthOfLIS = function(nums) {
     //read more to explain this step better
