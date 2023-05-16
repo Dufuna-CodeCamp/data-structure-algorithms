@@ -26,8 +26,14 @@ You must write an algorithm with O(log n) runtime complexity.
  
  */
 var search = function (nums, target) {
-  nums.sort;
   for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > nums[i + 1]) {
+      // Swap elements
+      var temp = nums[i];
+      nums[i] = nums[i + 1];
+      nums[i + 1] = temp;
+    }
+
     if (nums[i] === target) {
       return i;
     }
