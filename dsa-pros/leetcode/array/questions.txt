@@ -6,12 +6,3 @@ https://leetcode.com/problems/contains-duplicate/
 https://leetcode.com/problems/binary-search/
 https://leetcode.com/problems/rotate-array/
 https://leetcode.com/problems/longest-increasing-subsequence/
-
-
-===============================================================================
-                      WK - 5  Questions
-===============================================================================
-
-https://leetcode.com/problems/remove-element/
-https://leetcode.com/problems/move-zeroes/
-https://leetcode.com/problems/median-of-two-sorted-arrays/
