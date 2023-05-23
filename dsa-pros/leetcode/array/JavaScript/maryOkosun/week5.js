@@ -3,7 +3,6 @@ var removeElement = function (nums, val) {
 
   let currentIndex = 0;
   for (let i = 0; i < nums.length; i++) {
-    console.log("false", i, nums[i]);
     if (nums[i] !== val) {
       //checks if element at index i is not equal to val
       nums[currentIndex] = nums[i]; // Move the element to the nums[currentIndex]
