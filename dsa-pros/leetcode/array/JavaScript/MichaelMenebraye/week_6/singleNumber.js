@@ -17,16 +17,16 @@
 // Output: 1
 
 var singleNumber = function (nums) {
-    nums.sort();
-    let leftPointer = 0;
-    let rightPointer = 1;
+    nums.sort(); //sort arr to ascendng order
+    let leftPointer = 0; //get first arr index 
+    let rightPointer = 1; //get second arr index 
 
-    while (rightPointer < nums.length) {
-        if (nums[leftPointer] !== nums[rightPointer]) {
+    while (rightPointer < nums.length) { //loop though
+        if (nums[leftPointer] !== nums[rightPointer]) { //compare sorted array indexes
             return nums[leftPointer];
         }
-        leftPointer += 2;
-        rightPointer += 2;
+        leftPointer += 2; //skip to 2 after comparism 
+        rightPointer += 2; //skip to 2 after comparism
     }
     return nums[leftPointer];
 };
