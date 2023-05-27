@@ -22,7 +22,8 @@ var singleNumber = function (nums) {
     let rightPointer = 1; //get second arr index 
 
     while (rightPointer < nums.length) { //loop though
-        if (nums[leftPointer] !== nums[rightPointer]) { //compare sorted array with its sorted neigbour 
+        //every element appears twice except for one compare; thus, compare sorted array with its sorted neigbour 
+        if (nums[leftPointer] !== nums[rightPointer]) {
             return nums[leftPointer];
         }
         leftPointer += 2; //skip to 2 after comparism 
