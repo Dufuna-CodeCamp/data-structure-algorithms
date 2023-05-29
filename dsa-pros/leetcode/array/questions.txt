@@ -15,3 +15,12 @@ https://leetcode.com/problems/longest-increasing-subsequence/
 https://leetcode.com/problems/remove-element/
 https://leetcode.com/problems/move-zeroes/
 https://leetcode.com/problems/median-of-two-sorted-arrays/
+
+
+===============================================================================
+                      WK - 6  Questions
+===============================================================================
+https://leetcode.com/problems/single-number/
+https://leetcode.com/problems/majority-element-ii/
+https://leetcode.com/problems/two-sum/
+https://leetcode.com/problems/container-with-most-water/

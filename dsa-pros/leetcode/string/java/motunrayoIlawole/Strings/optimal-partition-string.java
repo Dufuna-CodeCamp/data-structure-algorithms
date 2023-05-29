@@ -6,6 +6,7 @@ class Solution {
         // Initialize substrings count to 1 because as long as the string is not empty, we can expect at least one substring by default.
         int count = 1;
 
+        // Create hashset to store unique characters
         HashSet<Character> characters = new HashSet<Character>();
 
         for (int i = 0; i < s.length(); i++) {
@@ -21,6 +22,8 @@ class Solution {
         
     }
 }
+
+
 /**
 abacaba
 count = 1
