@@ -1,0 +1,7 @@
+===============================================================================
+                      WK - 8  Questions
+===============================================================================
+
+https://leetcode.com/problems/design-linked-list/description/
+https://leetcode.com/problems/merge-two-sorted-lists/
+https://leetcode.com/problems/intersection-of-two-linked-lists/description/
