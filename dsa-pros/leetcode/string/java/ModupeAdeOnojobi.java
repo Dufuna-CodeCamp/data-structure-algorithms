@@ -368,3 +368,24 @@ class ReorganizeString {
 /*-------------------------------------------------------------------------
 11. Regular Expression Matching
 -------------------------------------------------------------------------- */
+
+class RegexMatching {
+    public boolean isMatch(String s, String p) {
+
+        if (p.isEmpty()) return s.isEmpty();
+
+        boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) ||            p.charAt(0) == '.');
+
+        if (p.length() >= 2 && p.charAt(1) == '*') {
+        // Case 1: '*' matches zero preceding element in pattern 'p'
+        // Case 2: '*' matches one or more preceding element in pattern 'p'
+
+            return (isMatch(s, p.substring(2))) || 
+                (firstMatch && isMatch(s.substring(1), p));
+        }  
+        // Chars match and move to the next characters in both 's' and 'p'
+
+        return firstMatch && isMatch(s.substring(1), p.substring(1));
+
+    }
+}
