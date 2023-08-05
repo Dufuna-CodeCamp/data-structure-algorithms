@@ -97,3 +97,50 @@ class RemoveNthNode {
     }      
     
 }
+
+
+/*-------------------------------------------------------------------------
+8. Middle of Linkedlist
+-------------------------------------------------------------------------- */
+class Middle {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast!=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+        
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+9. Remove Linkedlist Element
+-------------------------------------------------------------------------- */
+
+class RemoveElement {
+    public ListNode removeElements(ListNode head, int val) {
+        if(head == null) 
+            return head;
+        
+        ListNode temp = head;
+        while(temp.next != null){
+            if(temp.next.val == val){
+                temp.next = temp.next.next;
+            }
+            else{
+                temp = temp.next;
+            }
+        }
+
+        if(head.val == val) 
+            return head.next;
+
+        return head;
+    }
+        
+    
+}
