@@ -1,20 +1,40 @@
 /**
- * @param {string} str
+ * @param {string} s
+ * @param {number} p1
+ * @param {number} p2
+ * @return {boolean}
+ */
+const isTruePalindrome = function(s, p1, p2) {
+	while (p1 < p2) {
+		if (s[p1] !== s[p2]) return false;
+		p1++;
+		p2--;
+	}
+
+	return true;
+}
+
+
+/**
+ * @param {string} s
  * @return {boolean}
  */
 
-const palindromeII = str => {
-	if(str.length < 1 || str.length > 100000) return false;
+const palindromeII = function (s) {
+	let p1 = 0;
+	let p2 = s.length - 1;
 
-	let newString, reverseString;
-	for(let i = 0; i <= str.length; i++) {
-		newString = `${str.substring(0, i)}${str.substring(i + 1, str.length)}`;
-		newString = newString.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-
-		reverseString = newString.split('').reverse().join('');
-		if(newString === reverseString) return true;
+	while (p1 < p2) {
+		if (s[p1] !== s[p2]) return isTruePalindrome(s, p1 + 1, p2) || isTruePalindrome(s, p1, p2 - 1);
+		p1++;
+		p2--;
 	}
-	return false;
-}
 
-console.log(palindromeII('abc'));
+	return true;
+};
+
+
+
+
+
+console.log(palindromeII(1231));
