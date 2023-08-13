@@ -1,0 +1,16 @@
+===============================================================================
+                      WK - 14  Questions
+===============================================================================
+
+https://leetcode.com/problems/valid-parentheses/
+https://leetcode.com/problems/next-greater-element-i/
+https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
+
+
+===============================================================================
+                      WK - 15  Questions
+===============================================================================
+
+https://leetcode.com/problems/number-of-recent-calls/
+https://leetcode.com/problems/min-stack/
+https://leetcode.com/problems/simplify-path/
