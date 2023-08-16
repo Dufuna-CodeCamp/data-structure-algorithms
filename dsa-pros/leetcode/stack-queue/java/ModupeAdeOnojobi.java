@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 
@@ -91,5 +93,99 @@ class FinalPrice {
 
         return priceArr;
     
+    }
+}
+
+
+
+/*-------------------------------------------------------------------------
+4. Number of Recent Calls
+-------------------------------------------------------------------------- */
+
+class RecentCounter {
+
+    Queue<Integer> queue;
+
+    public RecentCounter() {
+        this.queue = new LinkedList<>();
+        
+    }
+    
+    public int ping(int t) {
+        queue.add(t);
+
+        while(queue.peek() < t - 3000) {
+            queue.poll();
+        }
+
+       return queue.size();
+        
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+5. Min Stack
+-------------------------------------------------------------------------- */
+
+class MinStack {
+
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
+
+    public MinStack() {
+        stack = new Stack<Integer>();
+        minStack = new Stack<Integer>();
+    }
+    
+    
+
+    public void push(int val) {
+        stack.push(val);
+
+        if (minStack.isEmpty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+    }
+
+    public void pop() {
+        if (stack.peek().equals(minStack.peek())) {
+            minStack.pop();
+        }
+        
+        stack.pop();
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+6. Simplify Path
+-------------------------------------------------------------------------- */
+
+class Solution {
+    public String simplifyPath(String path) {
+        
+        Stack<String> stack = new Stack<>();
+        String[] vals = path.split("/");
+
+        for (String val : vals) {
+            if (val.equals("..") && !stack.isEmpty()) {
+                stack.pop();
+            }
+            else if (!val.equals("..") && !val.equals(".") && !val.equals("")) 
+            {
+                stack.push(val);
+            }
+        }
+
+        return "/" + String.join("/", stack);
     }
 }
