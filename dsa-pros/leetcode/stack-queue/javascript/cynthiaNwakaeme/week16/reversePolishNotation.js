@@ -6,11 +6,13 @@ const reversePolishNotation = (tokens) => {
   let stack = [];
 
   for(let i = 0; i < tokens.length; i++) {
-    if(tokens[i] === "+") stack.push(stack.pop() + stack.pop());
-    else if(tokens[i] === "-") stack.push(-stack.pop() + stack.pop());
-    else if(tokens[i] === "*") stack.push(stack.pop() * stack.pop());
-    else if(tokens[i] === "/") stack.push(Math.trunc(1 / (stack.pop() / stack.pop())));
-    else stack.push(parseInt(tokens[i]));
+    const currentValue = tokens[i];
+
+    if(currentValue === "+") stack.push(stack.pop() + stack.pop());
+    else if(currentValue === "-") stack.push(-stack.pop() + stack.pop());
+    else if(currentValue === "*") stack.push(stack.pop() * stack.pop());
+    else if(currentValue === "/") stack.push(Math.trunc(1 / (stack.pop() / stack.pop())));
+    else stack.push(parseInt(currentValue));
   }
   return stack[0];
 };
