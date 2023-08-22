@@ -14,6 +14,7 @@ const reversePolishNotation = (tokens) => {
     else if(currentValue === "/") stack.push(Math.trunc(1 / (stack.pop() / stack.pop())));
     else stack.push(parseInt(currentValue));
   }
+
   return stack[0];
 };
 
