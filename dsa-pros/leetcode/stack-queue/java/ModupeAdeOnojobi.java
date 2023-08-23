@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -187,5 +188,97 @@ class Solution {
         }
 
         return "/" + String.join("/", stack);
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+7. Evaluate Reverse Polish Notation
+-------------------------------------------------------------------------- */
+
+class EvaluatePRN {
+    public int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (String token : tokens) {
+             
+            if (token.equals("+")) {
+                int operand2 = stack.pop();
+                int operand1= stack.pop();
+                stack.push(operand1 + operand2);
+              
+            } else if (token.equals("-")) {
+                int operand2 = stack.pop();
+                int operand1= stack.pop();
+                stack.push(operand1 - operand2);
+
+            } else if (token.equals("*")) {
+                int operand2 = stack.pop();
+                int operand1= stack.pop();
+                stack.push(operand1 * operand2);
+
+            } else if (token.equals("/")) {
+                int operand2 = stack.pop();
+                int operand1 = stack.pop();
+                stack.push(operand1 / operand2);
+
+            } else {
+                stack.push(Integer.parseInt(token));
+            }
+        }
+
+        return stack.pop();
+    }
+}
+
+/*-------------------------------------------------------------------------
+8. . Validate Stack Sequences
+-------------------------------------------------------------------------- */
+
+class ValidateStack {
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        Stack<Integer> stack = new Stack<>();
+        int popIndex = 0;
+
+        for (int num : pushed) {
+            stack.push(num);
+
+            while (!stack.isEmpty() && popIndex < popped.length && stack.peek() == popped[popIndex]) {
+                stack.pop();
+                popIndex++;
+            }
+        }
+
+        return stack.isEmpty();
+        
+    }
+}
+
+
+/*-------------------------------------------------------------------------
+9.  Next Greater Element II
+-------------------------------------------------------------------------- */
+
+class NxtGreaterEle {
+    public int[] nextGreaterElements(int[] nums) {
+      
+        int n = nums.length;
+        int[] result = new int[n];
+        Arrays.fill(result, -1);
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        for (int i = 0; i < n * 2; i++) {
+            int num = nums[i % n];
+            while (!stack.isEmpty() && nums[stack.peek()] < num) {
+                result[stack.pop()] = num;
+            }
+            if (i < n) {
+                stack.push(i);
+            }
+        }
+        
+        return result;
+        
     }
 }
