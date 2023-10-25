@@ -1,5 +1,5 @@
 let MinStack = function () {
-  this.storage = [];
+  this.storage = {};
   this.size = 0;
   this.minStorage = [];
 };
@@ -12,6 +12,7 @@ MinStack.prototype.push = function(val) {
   if (this.minStorage.length === 0 || val <= this.minStorage[this.minStorage.length - 1]) {
     this.minStorage[this.minStorage.length] = val;
   }
+  this.size++;
   this.storage[this.size] = val;
 };
 
@@ -64,10 +65,13 @@ console.log(minStack);
 
 minStack.push(-3);
 console.log(minStack);
+console.log(minStack.top())
 
 console.log(minStack.pop());
 console.log(minStack);
+//
+// console.log(minStack.pop());
+// console.log(minStack);
 
-console.log(minStack.pop());
 
 console.log(minStack.getMin());
