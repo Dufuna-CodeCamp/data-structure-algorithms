@@ -10,7 +10,7 @@
 
 
  * So at the end of the statement the constraints leads to pointing out that any person that is trusted by N-1 persons
- and the same person believes no one, then the preson is said to be a judge.
+ and the same person believes no one, then the person is said to be a judge.
 
  * Intuition:-
  * A basic intuition can be concluded from question is that, if a person is believing someone else than himself
@@ -33,11 +33,14 @@
 
  * Time Complexity:- O(n) where n is the total number of people living in the town
  * Space Complexity:- O(n) where n is the total number of people living in the town
+ *
+ * 1 ______> 3<________2
  * ***********/
 const FindTheTownJudge = (n, trust) => {
   if (n === 1) return 1;
 
   const Trusted = new Array(n + 1).fill(0);
+
   for (let [a, b] of trust) {
     Trusted[a] -= 1
     Trusted[b] += 1
