@@ -5,3 +5,12 @@
 https://leetcode.com/problems/find-the-town-judge/
 https://leetcode.com/problems/find-if-path-exists-in-graph/
 https://leetcode.com/problems/course-schedule/
+
+
+===============================================================================
+                      WK -  Questions
+===============================================================================
+
+https://leetcode.com/problems/symmetric-tree/
+https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
+https://leetcode.com/problems/average-of-levels-in-binary-tree/
