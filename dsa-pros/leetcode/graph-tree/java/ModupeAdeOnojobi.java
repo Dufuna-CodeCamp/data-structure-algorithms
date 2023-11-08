@@ -60,3 +60,74 @@ class PathExists{
 /*-------------------------------------------------------------------------
 3. Course Schedule
 -------------------------------------------------------------------------- */
+
+
+
+/*-------------------------------------------------------------------------
+4. Symmetric Tree
+-------------------------------------------------------------------------- */
+//  * Definition for a binary tree node.
+class TreeNode {
+      int val;
+      TreeNode left;
+     TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+}
+
+class Symmetric{
+    public boolean isSymmetric(TreeNode root) {
+
+        if (root == null) return true;
+       
+        return isMirror(root.left, root.right);
+        
+    }
+
+    private boolean isMirror(TreeNode left, TreeNode right) {
+        if (left == null || right == null) {
+            if (left == right) return true;
+            else return false;
+
+        }
+         
+        if (left.val != right.val) return false;
+
+        return isMirror(left.left, right.right) && isMirror(left.right, right.left);
+    }
+}
+
+/*-------------------------------------------------------------------------
+5. Sum of Root To Leaf Binary Numbers
+-------------------------------------------------------------------------- */
+
+class SumRootToLeaf {
+  public int sumRootToLeaf(TreeNode root) {
+
+      return sumRootLeaf(root, 0);
+      
+  }
+
+  public int sumRootLeaf(TreeNode root, int sum) {
+      if (root == null) {
+          return 0;
+      }
+
+      sum = (2 * sum) + root.val;
+      if (root.left == null && root.right == null) {
+          return sum;
+      }
+
+      return sumRootLeaf(root.left, sum) + sumRootLeaf(root.right, sum);
+  }
+}
+
+
+/*-------------------------------------------------------------------------
+5. Average of Levels in Binary Tree
+-------------------------------------------------------------------------- */
