@@ -8,9 +8,18 @@ https://leetcode.com/problems/course-schedule/
 
 
 ===============================================================================
-                      WK -  Questions
+                      WK - 22 Questions
 ===============================================================================
 
 https://leetcode.com/problems/symmetric-tree/
 https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
 https://leetcode.com/problems/average-of-levels-in-binary-tree/
+
+
+===============================================================================
+                      WK - 24 Questions
+===============================================================================
+
+https://leetcode.com/problems/binary-tree-inorder-traversal/
+https://leetcode.com/problems/maximum-depth-of-binary-tree/
+https://leetcode.com/problems/merge-two-binary-trees/
